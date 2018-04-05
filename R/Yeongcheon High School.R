@@ -17,7 +17,7 @@ setup_twitter_oauth(consumerKey,consumerSecret,accesstoken,accesstokensecret)
 1
 string<-'대구대'
 string<-iconv(string,'cp949','utf8')
-tweets<-searchTwitter(searchString = string,n=200,lang='ko',retryOnRateLimit = 100)
+tweets<-searchTwitter(searchString = string,n=2000,lang='ko')
 (text_extracted<-sapply(tweets,function(t)t$getText()))
 (text_extracted<-str_replace_all(text_extracted,'[0-9]',''))
 extractNoun
@@ -31,6 +31,6 @@ text_extracted<-sapply(text_extracted, extractNoun, USE.NAMES=F)
 wordcount <- table(unlist(text_extracted))
 
 palete <- brewer.pal(5,"Set1")
-wordcloud(names(wordcount),freq=wordcount,scale=c(5,0.1),rot.per=0.25,min.freq=1,
+wordcloud(names(wordcount),freq=wordcount,scale=c(5,0.5),rot.per=0.25,min.freq=5,
           random.order=F,random.color=T,colors=palete)
 
