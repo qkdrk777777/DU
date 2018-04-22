@@ -1,5 +1,18 @@
+#학습에 필요한 패키지 인스톨 및 실행
 if(!require(maps))install.packages('maps')
 library(maps)
+if(!require(mapdata))install.packages('mapdata')
+library(mapdata)
+if(!require(ggmap))install.packages('ggmap')
+library(ggmap)
+if(!require("XML")) install.packages("XML")
+if(!require("stringr")) install.packages("stringr")
+if(!require("RCurl")) install.packages("RCurl")
+if(!require("tm")) install.packages("tm")
+if(!require("SnowballC")) install.packages("SnowballC")
+if(!require("wordcloud")) install.packages("wordcloud")
+if(!require("RColorBrewer")) install.packages("RColorBrewer")
+
 map('world','South Korea')
 map('world','South Korea', fill=TRUE, col="grey")
 map('world','South Korea', fill=TRUE, col="grey", bg="lightblue")
@@ -10,8 +23,7 @@ points(stations$경도, stations$위도, pch=16)
 
 map('world',c('North Korea','South Korea'))
 ############################
-if(!require(mapdata))install.packages('mapdata')
-library(mapdata)
+
 map(database = "worldHires", region=c('South Korea', 'North Korea'))
 
 map(database = "worldHires", region=c('South Korea', 'North Korea', 'Japan', 'China'))
@@ -24,8 +36,7 @@ map.scale(cex=0.7)
 
 map(database = "worldHires", region=c('South Korea', 'North Korea', 'Japan', 'China'))
 ###############
-if(!require(ggmap))install.packages('ggmap')
-library(ggmap)
+
 
 geocode("daegu university")
 
@@ -39,9 +50,6 @@ ggmap(location)
 ###############
 
 
-if(!require("XML")) install.packages("XML")
-if(!require("stringr")) install.packages("stringr")
-if(!require("RCurl")) install.packages("RCurl")
 
 url2 <-iconv(getURL("http://www.weather.go.kr/weather/observation/currentweather.jsp",
                     .encoding="euc-kr"), from="euc-kr", to='UTF-8')
@@ -55,10 +63,6 @@ tables
 # Step 1 :  자료만들기
 # Step 2 :  필요 패키지 설치하기
 
-if(!require("tm")) install.packages("tm")
-if(!require("SnowballC")) install.packages("SnowballC")
-if(!require("wordcloud")) install.packages("wordcloud")
-if(!require("RColorBrewer")) install.packages("RColorBrewer")
 # Step 3 :  텍스트 불러오기
 text <- readLines(file.choose())
 filePath <- "http://www.sthda.com/sthda/RDoc/example-files/martin-luther-king-i-have-a-dream-speech.txt"
