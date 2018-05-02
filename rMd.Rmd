@@ -9,10 +9,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
 ```{r cars}
 summary(cars)
 ```
@@ -21,8 +17,39 @@ summary(cars)
 
 You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r pressure, echo=T}
+if(!require(maps))install.packages('maps');library(maps)
+if(!require(mapdata))install.packages('mapdata');library(mapdata)
+if(!require(ggmap))install.packages('ggmap');library(ggmap)
+if(!require("XML")) install.packages("XML");library(XML)
+if(!require("stringr")) install.packages("stringr");library(stringr)
+if(!require("RCurl")) install.packages("RCurl");library(RCurl)
+if(!require("tm")) install.packages("tm");library(tm)
+if(!require("SnowballC")) install.packages("SnowballC");library(SnowballC)
+if(!require("wordcloud")) install.packages("wordcloud");library(wordcloud)
+if(!require("RColorBrewer")) install.packages("RColorBrewer");library(RColorBrewer)
+map('world','South Korea', fill=TRUE, col="grey")
+map('world','South Korea', fill=TRUE, col="grey", bg="lightblue")
+
+map.axes()
+map.scale(129,34)
+#points(stations$경도, stations$위도, pch=16)
+
+map('world',c('North Korea','South Korea'))
+############################
+par(mar=c(0,0,0,0))
+map(database = "worldHires", region=c('South Korea', 'North Korea'))
+par(mar=c(0,0,0,0))
+map(database = "worldHires", region=c('South Korea', 'North Korea', 'Japan', 'China'))
+map(database = "worldHires", region='South Korea', col='blue', fill=TRUE, add=TRUE)
+map(database = "worldHires", region='North Korea', col='red', fill=TRUE, add=TRUE)
+map(database = "worldHires", region='Japan', col='black', fill=TRUE, add=TRUE)
+map(database = "worldHires", region='China', col='gold', fill=TRUE, add=TRUE)
+
+map.scale(cex=0.7)
+
+map(database = "worldHires", region=c('South Korea', 'North Korea', 'Japan', 'China'))
+
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
