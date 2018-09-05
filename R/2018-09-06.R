@@ -1,3 +1,5 @@
+if(!require(devtools))install.packages('devtools');library(devtools)
+install_github('qkdrk777777/spatial');library(spatial);set()
 #학습에 필요한 패키지 인스톨 및 실행
 if(!require(maps))install.packages('maps');library(maps)
 if(!require(mapdata))install.packages('mapdata');library(mapdata)
